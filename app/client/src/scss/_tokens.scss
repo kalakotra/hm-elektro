@@ -1,0 +1,122 @@
+// Brand tokens – HM Elektro (colours from the logo)
+// WCAG AA (checked): white on ink #1D1D1B = 16.9:1 · ink on brand blue #3CA0DC = 5.8:1 · blue on ink = 5.8:1 ·
+// link #1D72A4 on white = 5.3:1, on tint #EEF6FB = 4.8:1 · hover #19608A on white = 6.8:1.
+// White on brand blue is only 2.9:1 → blue surfaces always carry ink text.
+
+$ink: #1d1d1b;
+$blue: #3ca0dc;          // logo blue: surfaces, icons on dark, focus ring
+$blue-dark: #1d72a4;     // links / text on white + tint, button hover (white text 5.3:1)
+$blue-darker: #19608a;   // link hover
+$tint: #eef6fb;
+$on-dark-blue: $blue;    // 5.8:1 on $ink
+
+$gray-50: #fafafa;
+$gray-100: #f4f5f6;
+$gray-200: #e9ecef;
+$gray-300: #dde1e5;
+$gray-400: #b9bec4;
+$gray-500: #8c9197;
+$gray-600: #5e6166;      // 6.2:1 on white
+$gray-700: #3e4146;
+$gray-800: #2e2e2c;
+$gray-900: $ink;
+
+// Bootstrap overrides (applied before bootstrap/variables)
+$white: #fff;
+$black: #000;
+$primary: $blue;
+$secondary: $gray-600;
+$dark: $ink;
+$light: $gray-100;
+$body-color: $ink;
+$body-bg: $white;
+$link-color: $blue-dark;
+$link-hover-color: $blue-darker;
+$link-decoration: underline;
+$link-underline-offset: .18em;
+$color-contrast-dark: $ink;   // text on primary = ink (white fails on #3CA0DC)
+$min-contrast-ratio: 4.5;
+
+$custom-colors: (
+    'tint': $tint,
+);
+
+$font-family-sans-serif: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$headings-font-family: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif;
+$headings-font-weight: 700;
+$headings-line-height: 1.1;
+$headings-color: $ink;
+$font-size-base: 1.0625rem; // 17px
+$line-height-base: 1.6;
+$lead-font-size: 1.25rem;
+$lead-font-weight: 400;
+
+$h1-font-size: 4rem;
+$h2-font-size: 2.875rem;
+$h3-font-size: 1.625rem;
+$h4-font-size: 1.375rem;
+$h5-font-size: 1.1875rem;
+$h6-font-size: 1.0625rem;
+$enable-rfs: true;
+
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 4.5,
+    7: $spacer * 7,
+);
+
+$grid-gutter-width: 1.5rem;
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+$border-radius: .375rem;     // 6px buttons/inputs
+$border-radius-sm: .25rem;
+$border-radius-lg: .625rem;  // 10px cards
+$border-color: $gray-300;
+$enable-shadows: false;
+$enable-negative-margins: true;
+
+$btn-padding-y: .6875rem;
+$btn-padding-x: 1.375rem;
+$btn-font-weight: 600;
+$btn-border-radius: $border-radius;
+$btn-border-radius-lg: $border-radius;
+$btn-border-width: 2px;
+$input-btn-font-size: 1rem;
+$input-padding-y: .6875rem;
+$input-padding-x: .875rem;
+$input-border-color: $gray-400;
+$input-border-width: 1px;
+$input-border-radius: $border-radius;
+$input-focus-border-color: $blue-dark;
+$focus-ring-color: rgba($blue, .45);
+$focus-ring-width: .25rem;
+$form-label-font-weight: 600;
+
+$card-border-color: $gray-300;
+$card-border-radius: $border-radius-lg;
+$card-spacer-y: 2rem;
+$card-spacer-x: 2rem;
+$card-cap-bg: transparent;
+
+$breadcrumb-divider: quote('/');
+$breadcrumb-margin-bottom: 0;
+
+$navbar-nav-link-padding-x: .5rem;
+$offcanvas-horizontal-width: 340px;
+$dropdown-link-active-bg: $tint;
+$dropdown-link-active-color: $ink;
+
+$header-height: 88px;
+$header-height-mobile: 68px;

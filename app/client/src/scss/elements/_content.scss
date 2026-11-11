@@ -1,0 +1,101 @@
+// Text + media (ElementTextMedia + TextMediaExtension)
+.text-media {
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: $border-radius-lg;
+        aspect-ratio: 26 / 22;
+        object-fit: cover;
+    }
+
+    &__title { margin-bottom: 1.5rem; }
+    &__body .typography { font-size: 1.125rem; color: $gray-700; }
+    &__body .typography .list-check { color: $ink; font-size: 1.0625rem; }
+
+    [data-bs-theme='dark'] &__body .typography { color: $gray-300; }
+    [data-bs-theme='dark'] &__body .typography .list-check { color: $white; }
+
+    @include media-breakpoint-up(xl) {
+        &--image-left &__body { padding-left: 1.5rem; }
+        &--image-right &__body { padding-right: 1.5rem; }
+    }
+}
+
+// Call to action (colour from the section background)
+.cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+
+    &--split {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+    }
+
+    &--center {
+        align-items: center;
+        text-align: center;
+        max-width: 820px;
+        margin-inline: auto;
+
+        .cta-buttons { justify-content: center; }
+    }
+
+    &__text { max-width: 720px; }
+    &__title { margin-bottom: .75rem; font-size: calc(1.4rem + 1.4vw); }
+    @include media-breakpoint-up(xl) { &__title { font-size: 2.5rem; } }
+    &__lead { margin: 0; font-size: 1.125rem; }
+    &__actions { flex: none; }
+}
+
+// FAQ
+.faq {
+    &__title { margin-bottom: 1.25rem; }
+    &__intro { color: $gray-700; font-size: 1.125rem; }
+
+    &__items { border-top: 1px solid $gray-300; }
+
+    &__item { border-bottom: 1px solid $gray-300; }
+
+    &__question {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        min-height: 44px;
+        padding: 1.375rem 0;
+        font-family: $headings-font-family;
+        font-size: 1.3125rem;
+        font-weight: 600;
+        line-height: 1.3;
+        cursor: pointer;
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
+        &:hover { color: $blue-dark; }
+    }
+
+    &__toggle {
+        color: $blue-dark;
+        transition: transform .2s ease;
+        stroke-width: 2.4;
+
+        [open] > summary & { transform: rotate(45deg); }
+    }
+
+    &__answer {
+        padding: 0 3rem 1.5rem 0;
+        color: $gray-700;
+
+        @include media-breakpoint-down(md) { padding-right: 0; }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq__toggle { transition: none; }
+}

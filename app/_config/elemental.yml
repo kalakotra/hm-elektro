@@ -1,0 +1,78 @@
+---
+Name: app-elemental
+After:
+  - '#elementalpageextension'
+  - '#youwilllikeit-elements'
+---
+Page:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+  allowed_elements:
+    - YouWillLikeIT\Elements\Elements\ElementHero
+    - YouWillLikeIT\Elements\Elements\ElementTextMedia
+    - YouWillLikeIT\Elements\Elements\ElementFeatureGrid
+    - YouWillLikeIT\Elements\Elements\ElementCallToAction
+    - YouWillLikeIT\Elements\Elements\ElementFaq
+    - DNADesign\ElementalUserForms\Model\ElementForm
+
+DNADesign\Elemental\Models\BaseElement:
+  inline_editable: false
+  extensions:
+    - YouWillLikeIT\Elements\Extensions\SectionStyleExtension
+    - App\Extensions\Elements\ButtonToneExtension
+
+DNADesign\Elemental\Controllers\ElementController:
+  include_default_styles: false
+
+# Section styles → Bootstrap classes (module stays framework-agnostic).
+# Brand blue (#3CA0DC) carries ink text (white would be 2.9:1). The module counts "primary" as a dark section;
+# templates use ButtonToneExtension::IsDarkTheme instead (sequential config arrays can't drop entries).
+YouWillLikeIT\Elements\Extensions\SectionStyleExtension:
+  background_classes:
+    light: 'bg-light'
+    dark: 'bg-dark text-bg-dark'
+    primary: 'bg-primary text-bg-primary'
+    image: 'text-bg-dark section--image'
+  spacing_classes:
+    none: ''
+    sm: 'py-5'
+    md: 'py-6 py-lg-7'
+    lg: 'py-7'
+  width_classes:
+    default: 'container'
+    narrow: 'container container-narrow'
+    full: 'container-fluid px-0'
+
+# Project fields on module elements (module never changed for this site)
+YouWillLikeIT\Elements\Elements\ElementHero:
+  extensions:
+    - App\Extensions\Elements\EyebrowExtension
+    - App\Extensions\Elements\HeroExtension
+
+YouWillLikeIT\Elements\Elements\ElementFeatureGrid:
+  extensions:
+    - App\Extensions\Elements\EyebrowExtension
+    - App\Extensions\Elements\FeatureGridExtension
+
+YouWillLikeIT\Elements\Models\FeatureItem:
+  extensions:
+    - App\Extensions\Elements\FeatureItemExtension
+
+YouWillLikeIT\Elements\Elements\ElementTextMedia:
+  extensions:
+    - App\Extensions\Elements\EyebrowExtension
+    - App\Extensions\Elements\TextMediaExtension
+
+YouWillLikeIT\Elements\Elements\ElementCallToAction:
+  extensions:
+    - App\Extensions\Elements\EyebrowExtension
+    - App\Extensions\Elements\CallToActionExtension
+
+YouWillLikeIT\Elements\Elements\ElementFaq:
+  extensions:
+    - App\Extensions\Elements\EyebrowExtension
+    - App\Extensions\Elements\FaqExtension
+
+DNADesign\ElementalUserForms\Model\ElementForm:
+  extensions:
+    - App\Extensions\Elements\ElementFormExtension

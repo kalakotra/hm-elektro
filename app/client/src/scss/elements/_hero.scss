@@ -1,0 +1,144 @@
+// Hero (ElementHero + HeroExtension)
+.element--elementhero {
+    &.element--variant-home {
+        padding-block: 3rem 0 !important;
+
+        @include media-breakpoint-up(lg) { padding-top: 4.5rem !important; }
+    }
+
+    &.element--variant-compact {
+        background: $tint;
+        padding-block: 1.75rem 3.5rem !important;
+
+        @include media-breakpoint-up(lg) { padding-block: 1.75rem 5rem !important; }
+
+        .breadcrumbs { margin-bottom: 2.5rem; }
+    }
+}
+
+.hero {
+    &__title {
+        margin-bottom: 1.5rem;
+
+        .hero--compact & { font-size: calc(1.6rem + 2.4vw); }
+
+        @include media-breakpoint-up(xl) {
+            .hero--compact & { font-size: 3.75rem; }
+        }
+    }
+
+    &__accent { color: $blue-dark; }
+
+    &__lead {
+        max-width: 640px;
+        color: $gray-700;
+    }
+
+    &__trust {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: .625rem 1.75rem;
+        margin: 2rem 0 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid $gray-300;
+        font-weight: 500;
+
+        @include media-breakpoint-up(sm) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+        li { display: flex; align-items: flex-start; gap: .625rem; }
+    }
+
+    &__trust-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-top: .2em;
+        color: $blue-dark;
+        stroke-width: 2.6;
+    }
+
+    &__media {
+        position: relative;
+
+        .hero--home & { @include media-breakpoint-up(lg) { padding-bottom: 2.5rem; } }
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: $border-radius-lg;
+        object-fit: cover;
+
+        .hero--home & { aspect-ratio: 6 / 7; }
+        .hero--compact & { aspect-ratio: 4 / 3; }
+    }
+}
+
+.hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: $ink;
+    color: $white;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 18px 40px rgba($ink, .25);
+
+    @include media-breakpoint-up(lg) {
+        position: absolute;
+        left: -2.5rem;
+        bottom: 0;
+        margin: 0;
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        flex: none;
+        border: 2px solid $blue;
+        border-radius: 50%;
+        color: $blue;
+
+        .icon { width: 1.375rem; height: 1.375rem; stroke-width: 2.4; }
+    }
+
+    &__text { display: flex; flex-direction: column; line-height: 1.35; }
+    &__label { font-size: .875rem; color: $gray-300; }
+
+    &__phone {
+        font-size: 1.1875rem;
+        font-weight: 600;
+        color: $white !important;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; }
+    }
+}
+
+// Service quick links: full-bleed grey band under the home hero
+.hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1rem;
+    margin-top: 3.5rem;
+    padding-block: 1.25rem;
+    background: $gray-100;
+    box-shadow: 0 0 0 100vmax $gray-100;
+    clip-path: inset(0 -100vmax);
+
+    @include media-breakpoint-up(lg) { margin-top: 4rem; }
+
+    &__label { font-weight: 600; }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .625rem;
+        margin: 0;
+    }
+}

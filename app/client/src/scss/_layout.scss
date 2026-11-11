@@ -1,0 +1,265 @@
+// Topbar
+.topbar {
+    background: $ink;
+    color: $gray-300;
+    font-size: .875rem;
+
+    .container { min-height: 40px; }
+    .icon-sm { color: $on-dark-blue; }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        color: $gray-300;
+        text-decoration: none;
+
+        &:hover { color: $white; text-decoration: underline; }
+    }
+
+    :focus-visible { outline-color: $on-dark-blue; }
+}
+
+// Header
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: $zindex-sticky;
+    background: $white;
+    border-bottom: 1px solid $gray-300;
+    transition: box-shadow .2s ease;
+
+    &.is-scrolled { box-shadow: 0 6px 24px rgba($ink, .08); }
+
+    .navbar {
+        min-height: var(--hm-header-h);
+        padding-block: .5rem;
+    }
+
+    &__logo {
+        display: block;
+        width: auto;
+        height: 42px;
+
+        @include media-breakpoint-up(lg) { height: 52px; }
+    }
+
+    .nav-link {
+        font-weight: 500;
+        font-size: 1.0625rem;
+        color: $ink;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+
+        &:hover, &:focus-visible { color: $blue-dark; }
+        &.active, &[aria-current='page'] {
+            color: $blue-dark;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-color: $blue;
+            text-underline-offset: .55em;
+        }
+    }
+
+    .nav-split {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        > .nav-link:first-child { padding-right: .125rem; }
+        .dropdown-toggle-split { min-width: 44px; justify-content: center; padding-inline: .375rem; border: 0; background: none; text-decoration: none; }
+    }
+
+    .dropdown-menu {
+        border-color: $gray-300;
+        border-radius: $border-radius-lg;
+        box-shadow: 0 12px 32px rgba($ink, .12);
+        padding: .5rem;
+
+        .dropdown-item { border-radius: $border-radius-sm; padding: .6rem .9rem; }
+
+        @include media-breakpoint-down(lg) {
+            position: static;
+            flex-basis: 100%;
+            border: 0;
+            box-shadow: none;
+            padding-top: 0;
+        }
+    }
+
+    &__phone {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+        color: $ink;
+        text-decoration: none;
+
+        @include media-breakpoint-up(lg) { text-align: right; }
+        &:hover { color: $blue-dark; }
+    }
+
+    &__phone-label { font-size: .8125rem; color: $gray-600; }
+    &__phone-number { font-size: 1.0625rem; font-weight: 600; }
+
+    .offcanvas-body {
+        @include media-breakpoint-up(lg) { display: flex; }
+    }
+}
+
+// Sections (ElementHolder)
+.element {
+    position: relative;
+    isolation: isolate;
+}
+
+.section--image {
+    background: $ink;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: rgba($ink, .7);
+    }
+}
+
+.section__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.bg-dark { background-color: $ink !important; }
+.bg-light { background-color: $gray-100 !important; }
+.bg-primary { background-color: $blue !important; color: $ink !important; }
+
+.container-narrow {
+    max-width: 920px;
+}
+
+.section-head {
+    max-width: 760px;
+    margin-bottom: 3rem;
+
+    &__title { margin-bottom: 0; }
+    &__intro { margin: 1rem 0 0; color: $gray-700; font-size: 1.125rem; }
+    [data-bs-theme='dark'] &__intro { color: $gray-300; }
+
+    &--split {
+        max-width: none;
+
+        @include media-breakpoint-up(lg) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 3rem;
+
+            .section-head__text { max-width: 760px; }
+        }
+
+        .section-head__actions {
+            margin-top: 1.5rem;
+
+            @include media-breakpoint-up(lg) { margin-top: 0; flex: none; }
+        }
+    }
+}
+
+// Breadcrumbs (hero, text pages)
+.breadcrumbs {
+    margin-bottom: 2.5rem;
+    font-size: .9375rem;
+
+    .breadcrumb-item {
+        color: $gray-600;
+        + .breadcrumb-item::before { color: $gray-500; }
+        &.active { color: $ink; }
+    }
+}
+
+// Text pages (Impressum, Datenschutz)
+.page-text {
+    &__title { margin-bottom: 2.5rem; font-size: calc(1.6rem + 2vw); }
+    @include media-breakpoint-up(xl) { &__title { font-size: 3.25rem; } }
+    .breadcrumbs { margin-bottom: 2.5rem; }
+}
+
+// Footer
+.site-footer {
+    background: $ink;
+    color: $gray-300;
+    font-size: 1rem;
+    padding-top: 5rem;
+
+    @include media-breakpoint-down(md) { padding-bottom: 5.5rem; } // room for action bar
+
+    &__main {
+        padding-bottom: 3.5rem;
+        border-bottom: 1px solid $gray-800;
+    }
+
+    &__logo { width: auto; height: 52px; }
+    &__seal { margin-top: .5rem; }
+
+    &__title {
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        color: $white;
+
+        a { color: inherit !important; text-decoration: none; }
+    }
+
+    a:not(.btn) {
+        color: $gray-300;
+        text-decoration: none;
+
+        &:hover { color: $on-dark-blue; text-decoration: underline; }
+        &[aria-current='page'] { color: $white; text-decoration: underline; }
+    }
+
+    address { font-style: normal; }
+
+    &__contact li,
+    &__links li { margin-bottom: .25rem; }
+
+    &__contact a,
+    &__links a,
+    &__title a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+    }
+
+    &__contact li:not(:has(a)) { padding-block: .3rem; }
+
+    &__contact .icon-sm { color: $on-dark-blue; }
+
+    &__bottom {
+        padding-block: 1.5rem;
+        font-size: .875rem;
+        color: $gray-400;
+    }
+}
+
+// Mobile sticky action bar
+.action-bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: $zindex-fixed;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .625rem;
+    padding: .625rem 1rem calc(.625rem + env(safe-area-inset-bottom));
+    background: $white;
+    border-top: 1px solid $gray-300;
+    box-shadow: 0 -6px 20px rgba($ink, .1);
+}
