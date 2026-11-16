@@ -36,7 +36,13 @@ class Page extends SiteTree
         'OGImage',
     ];
 
-    public function fieldLabels($includerelations = true): array
+    /**
+     * No return type: ErrorPage, RedirectorPage, VirtualPage and UserDefinedForm extend Page and override
+     * these methods without one (SiteTree is untyped) – a typed signature here is a fatal error for them.
+     *
+     * @return array<string, string>
+     */
+    public function fieldLabels($includerelations = true)
     {
         $labels = parent::fieldLabels($includerelations);
         $labels['MetaTitle'] = _t(self::class . '.MetaTitle', 'Meta-Titel');
@@ -46,7 +52,10 @@ class Page extends SiteTree
         return $labels;
     }
 
-    public function getCMSFields(): FieldList
+    /**
+     * @return FieldList
+     */
+    public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields): void {
             $fields->addFieldsToTab('Root.SEO', [
